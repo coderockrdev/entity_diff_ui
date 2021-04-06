@@ -140,12 +140,12 @@ class RevisionOverviewForm extends FormBase {
     $languages = $entity->getTranslationLanguages();
     $has_translations = (count($languages) > 1);
     $entity_type_id = $entity->getEntityTypeId();
-    $term_storage = $this->entityTypeManager->getStorage($entity_type_id);
+    $entity_storage = $this->entityTypeManager->getStorage($entity_type_id);
     $type = $entity->bundle();
     
     $pagerLimit = $this->config->get('general_settings.revision_pager_limit');
     
-    $query = $term_storage->getQuery()
+    $query = $entity_storage->getQuery()
     ->condition($entity->getEntityType()->getKey('id'), $entity->id())
     ->pager($pagerLimit)
     ->allRevisions()
@@ -205,10 +205,10 @@ class RevisionOverviewForm extends FormBase {
     foreach ($vids as $key => $vid) {
       $previous_revision = NULL;
       if (isset($vids[$key + 1])) {
-        $previous_revision = $term_storage->loadRevision($vids[$key + 1]);
+        $previous_revision = $entity_storage->loadRevision($vids[$key + 1]);
       }
       /** @var \Drupal\Core\Entity\ContentEntityInterface $revision */
-      if ($revision = $term_storage->loadRevision($vid)) {
+      if ($revision = $entity_storage->loadRevision($vid)) {
         if ($revision->hasTranslation($langcode) && $revision->getTranslation($langcode)->isRevisionTranslationAffected()) {
           $username = array(
             '#theme' => 'username',
