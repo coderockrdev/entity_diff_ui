@@ -73,7 +73,7 @@ abstract class EntityRevisionAccessCheckBase {
       ];
     }
     else {
-      return AccessResult::forbidden('No access to the taxonomy revision.');
+      return AccessResult::forbidden('No access to the revision.');
     }
 
     return AccessResult::allowedIf($this->checkAccess($entity, $account, $map, $type_map, $operation))->cachePerPermissions()->addCacheableDependency($entity);

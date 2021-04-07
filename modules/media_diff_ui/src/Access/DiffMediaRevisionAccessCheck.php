@@ -83,7 +83,7 @@ class DiffMediaRevisionAccessCheck extends MediaRevisionAccessCheck {
       ];
     }
     else {
-      return AccessResult::forbidden('No access to the taxonomy revision.');
+      return AccessResult::forbidden('No access to the revision.');
     }
     
     return AccessResult::allowedIf($this->checkDiffAccess($entity, $account, $map, $type_map, $operation))->cachePerPermissions()->addCacheableDependency($entity);
