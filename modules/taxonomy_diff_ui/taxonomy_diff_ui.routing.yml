@@ -30,7 +30,7 @@ entity.taxonomy_term.revision:
   requirements:
     _access_taxonomy_revision: 'view'
     taxonomy_term: \d+
-    revision: \d+
+    taxonomy_term_revision: \d+
     
 taxonomy_term.revision_revert_confirm:
   path: '/taxonomy/term/{taxonomy_term}/revisions/{taxonomy_term_revision}/revert'
@@ -40,7 +40,7 @@ taxonomy_term.revision_revert_confirm:
   requirements:
     _access_taxonomy_revision: 'update'
     taxonomy_term: \d+
-    revision: \d+
+    taxonomy_term_revision: \d+
   options:
     _admin_route: TRUE
 
@@ -52,7 +52,7 @@ taxonomy_term.revision_revert_translation_confirm:
   requirements:
     _access_taxonomy_revision: 'update'
     taxonomy_term: \d+
-    revision: \d+
+    taxonomy_term_revision: \d+
   options:
     _admin_route: TRUE
 
@@ -64,7 +64,7 @@ taxonomy_term.revision_delete_confirm:
   requirements:
     _access_taxonomy_revision: 'delete'
     taxonomy_term: \d+
-    revision: \d+
+    taxonomy_term_revision: \d+
   options:
     _admin_route: TRUE
     
