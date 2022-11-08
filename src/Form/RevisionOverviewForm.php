@@ -127,7 +127,7 @@ class RevisionOverviewForm extends FormBase {
    * {@inheritdoc}
    */
   public function getFormId() {
-    return 'taxonomy_revision_overview_form';
+    return 'entity_diff_revision_overview_form';
   }
   
   /**
