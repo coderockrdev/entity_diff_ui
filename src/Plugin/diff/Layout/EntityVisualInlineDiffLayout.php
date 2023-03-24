@@ -16,7 +16,8 @@ class EntityVisualInlineDiffLayout extends VisualInlineDiffLayout {
    */
   protected function buildRevisionData(ContentEntityInterface $revision) {
     if ($revision instanceof RevisionLogInterface) {
-      $revision_log = Xss::filter($revision->getRevisionLogMessage());
+      $revision_log_message = $revision->getRevisionLogMessage();
+      $revision_log = !empty($revision_log_message) ? Xss::filter($revision_log_message) : '';
       $revision_user = $revision->getRevisionUser();
       $user_id = $revision->getRevisionUserId();
       
