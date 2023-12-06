@@ -1,0 +1,10 @@
+{
+    "name": "drupal/entity_diff_ui",
+    "type": "drupal-module",
+    "license": "GPL-2.0-or-later",
+    "description": "Provides the capabilities to compare the difference between entity revisions.",
+    "minimum-stability": "stable",
+    "require": {
+        "drupal/diff": "^1.1"
+    }
+}
