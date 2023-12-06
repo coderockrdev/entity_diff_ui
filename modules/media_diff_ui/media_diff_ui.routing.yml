@@ -10,7 +10,7 @@ entity.media.revisions_diff:
      right_revision: \d+
   options:
     _admin_route: TRUE
-
+    
 entity.media.version_history:
   path: '/media/{media}/revisions'
   defaults:
@@ -21,17 +21,17 @@ entity.media.version_history:
     media: \d+
   options:
     _admin_route: TRUE
-
+    
 entity.media.revision:
   path: '/media/{media}/revisions/{media_revision}/view'
   defaults:
     _controller: '\Drupal\media_diff_ui\Controller\MediaRevisionController::revisionShow'
     _title_callback: '\Drupal\media_diff_ui\Controller\MediaRevisionController::revisionPageTitle'
   requirements:
-    _access_media_diff_revision: 'media_revision.view revision'
+    _access_media_diff_revision: 'view'
     media: \d+
     media_revision: \d+
-
+    
 media.revision_revert_confirm:
   path: '/media/{media}/revisions/{media_revision}/revert'
   defaults:
@@ -67,3 +67,4 @@ media.revision_delete_confirm:
     media_revision: \d+
   options:
     _admin_route: TRUE
+    

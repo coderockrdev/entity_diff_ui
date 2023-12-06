@@ -1,12 +1,13 @@
 <?php
 
+use Drupal\Core\Entity\EntityInterface;
 use Drupal\taxonomy\TermInterface;
 
 /**
  * Implements hook_entity_presave().
  * 
  */
-function taxonomy_diff_ui_entity_presave(Drupal\Core\Entity\EntityInterface $entity) {
+function taxonomy_diff_ui_entity_presave(EntityInterface $entity) {
   if ($entity instanceof TermInterface) {
     $uid = \Drupal::currentUser()->id();
     $entity->setRevisionUserId($uid);
