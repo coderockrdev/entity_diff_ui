@@ -36,8 +36,6 @@ include:
     ref: $_GITLAB_TEMPLATES_REF
     file:
       - '/includes/include.drupalci.main.yml'
-      # EXPERIMENTAL: For Drupal 7, remove the above line and uncomment the below.
-      # - '/includes/include.drupalci.main-d7.yml'
       - '/includes/include.drupalci.variables.yml'
       - '/includes/include.drupalci.workflows.yml'
 
@@ -51,6 +49,10 @@ include:
 # variables:
 #   SKIP_ESLINT: '1'
 
+variables:
+  _TARGET_PHP: "8.1"
+  _TARGET_CORE: "10.1.3"
+  SYMFONY_DEPRECATIONS_HELPER: disabled
 
 ###################################################################################
 #
