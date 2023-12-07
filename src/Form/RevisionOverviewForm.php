@@ -183,10 +183,10 @@ class RevisionOverviewForm extends FormBase {
     }
     $table_header['operations'] = $this->t('Operations');
     
-    $rev_revert_perm = $account->hasPermission("revert $type revisions") ||
-    $account->hasPermission("revert all $entity_type_id revisions");
-    $rev_delete_perm = $account->hasPermission("delete $type revisions") ||
-    $account->hasPermission("delete all $entity_type_id revisions");
+    $rev_revert_perm = $account->hasPermission($this->getEntityRevertPermission($entity)) ||
+      $account->hasPermission("revert all $entity_type_id revisions");
+    $rev_delete_perm = $account->hasPermission($this->getEntityDeletePermission($entity)) ||
+      $account->hasPermission("delete all $entity_type_id revisions");
     $revert_permission = $rev_revert_perm && $entity->access('update');
     $delete_permission = $rev_delete_perm && $entity->access('delete');
     
@@ -308,6 +308,30 @@ class RevisionOverviewForm extends FormBase {
     // @todo Replace the css from node module.
     $build['#attached']['library'][] = 'node/drupal.node.admin';
     return $build;
+  }
+  
+  /**
+   * Get the revert permissions string for an entity.
+   *
+   * @return string
+   *   The permission
+   */
+  protected function getEntityRevertPermission(EditorialContentEntityBase $entity) {
+    $type = $entity->bundle();
+
+    return "revert $type revisions";
+  }
+  
+  /**
+   * Get the delete permissions string for an entity.
+   *
+   * @return string
+   *   The permission
+   */
+  protected function getEntityDeletePermission(EditorialContentEntityBase $entity) {
+    $type = $entity->bundle();
+
+    return "delete $type revisions";
   }
   
   /**
