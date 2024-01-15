@@ -15,7 +15,6 @@ class EntitySplitFieldsDiffLayout extends SplitFieldsDiffLayout {
    */
   protected function buildRevisionData(ContentEntityInterface $revision) {
     if ($revision instanceof RevisionLogInterface) {
-      $revision_log = Xss::filter($revision->getRevisionLogMessage());
       $revision_user = $revision->getRevisionUser();
       $user_id = $revision->getRevisionUserId();
       
@@ -44,8 +43,9 @@ class EntitySplitFieldsDiffLayout extends SplitFieldsDiffLayout {
         '#suffix' => '</div>',
       ];
       
-      if ($revision_log) {
-        $revision_link['message'] = [
+      if ($revision->getRevisionLogMessage()) {
+        $revision_log = Xss::filter($revision->getRevisionLogMessage()); 
+         $revision_link['message'] = [
           '#type' => 'markup',
           '#prefix' => '<div class="diff-revision__item diff-revision__item-message">',
           '#suffix' => '</div>',
