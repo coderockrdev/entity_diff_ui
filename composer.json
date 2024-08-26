@@ -5,6 +5,6 @@
     "description": "Provides the capabilities to compare the difference between entity revisions.",
     "minimum-stability": "stable",
     "require": {
-        "drupal/diff": "^1.1"
+        "drupal/diff": "2.0@beta"
     }
 }
